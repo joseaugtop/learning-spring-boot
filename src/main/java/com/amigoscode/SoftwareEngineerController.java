@@ -30,8 +30,17 @@ public class SoftwareEngineerController {
 
     @PostMapping
     //normalmente é um dto (data transfer object)
-    public void addNewSoftwareEngineer( @RequestBody SoftwareEngineer softwareEngineer) {
-        softwareEngineerService.insertSoftwareEngineer(softwareEngineer);
+    public SoftwareEngineer addNewSoftwareEngineer( @RequestBody SoftwareEngineer softwareEngineer) {
+        return softwareEngineerService.insertSoftwareEngineer(softwareEngineer);
     }
 
+    @DeleteMapping("{id}")
+    public SoftwareEngineer deleteSoftwareEngineer(@PathVariable Integer id) {
+        return softwareEngineerService.deleteSoftwareEngineer(id);
+    }
+
+    @PutMapping("{id}")
+    public SoftwareEngineer updateSoftwareEngineerByID(@PathVariable Integer id, @RequestBody SoftwareEngineer softwareEngineer) {
+        return softwareEngineerService.updateSoftwareEngineerByID(id, softwareEngineer);
+    }
 }
